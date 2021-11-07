@@ -4,7 +4,7 @@ import Image from "../components/Image"
 import { getClass } from "../utils"
 
 function Photos() {
-    const {photosArray, origin} = useContext(MainContext) 
+    const {photosArray, loading} = useContext(MainContext) 
 
     const imageElements = photosArray.map((img, i) => (
         <Image 
@@ -16,7 +16,7 @@ function Photos() {
 
     return (
         <main className="photos">
-            <span>{origin}</span>
+            <span>{loading}</span>
             {imageElements}
         </main>
     )

@@ -5,7 +5,7 @@ const MainContext = createContext()
 function MainContextProvider({ children }) {
     const [ photosArray, setPhotosArray ] = useState([])
     const [ cartItems, setCartItems ] = useState([])
-    const [ origin, setOrigin ] = useState("API")
+    const [ loading, setLoading ] = useState(true)
 
     const url = "https://my-hikes-api.herokuapp.com/hikes"
     
@@ -31,10 +31,10 @@ function MainContextProvider({ children }) {
 
     const getData = async (url) => {
         let response = await fetch(url, {method: "GET"})
-        setOrigin(`API: ${response.status}`)
+        setLoading(`API: ${response.status}`)
         if (response.status !== 200) {
             response = await fetch("https://github.com/geanu02/hikes_api/blob/master/db.json", {method: "GET"})
-            setOrigin(`JSON: ${response.status}`)
+            setLoading(`JSON: ${response.status}`)
         }
         const data = await response.json()
         return data
