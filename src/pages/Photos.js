@@ -1,10 +1,12 @@
 import React, { useContext } from "react"
 import { MainContext } from "../context/mainContext"
 import Image from "../components/Image"
+import Spinner from "../components/Spinner"
 import { getClass } from "../utils"
 
+
 function Photos() {
-    const {photosArray, loading} = useContext(MainContext) 
+    const { photosArray, loading } = useContext(MainContext) 
 
     const imageElements = photosArray.map((img, i) => (
         <Image 
@@ -16,8 +18,11 @@ function Photos() {
 
     return (
         <main className="photos">
-            <span>{loading}</span>
-            {imageElements}
+            {
+                loading ?
+                <Spinner /> :
+                imageElements
+            }
         </main>
     )
 }

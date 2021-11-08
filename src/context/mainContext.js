@@ -29,25 +29,43 @@ function MainContextProvider({ children }) {
 
     const emptyCart = () => setCartItems([])
 
-    const getData = async (url) => {
-        let response = await fetch(url, {method: "GET"})
-        setLoading(`API: ${response.status}`)
-        if (response.status !== 200) {
-            response = await fetch("https://github.com/geanu02/hikes_api/blob/master/db.json", {method: "GET"})
-            setLoading(`JSON: ${response.status}`)
+    const getData = async ( url ) => {
+        try {
+            const response = await fetch(url, {method: "GET"})
+            const data = await response.json()
+            return { success: true, data }
+        } catch (error) {
+            console.log(error)
+            return {success: false}
         }
-        const data = await response.json()
-        return data
     }
 
     useEffect(() => {
-        getData(url)
-            .then(data => setPhotosArray(data))
-            .catch((err) => console.log(err))
+        (async () => {
+            setLoading(true)
+            const res = await getData(url)
+            if (res.success) {
+                setLoading(false)
+                setPhotosArray(res.data)
+                
+            }
+        })()
+        // getData(url)
+        //     .then(data => setPhotosArray(data))
+        //     .catch((err) => console.log(err))
     }, [])
 
     return (
-        <MainContext.Provider value={{ photosArray, cartItems, toggleFavorite, addToCart, removeFromCart, emptyCart, origin }}>
+        <MainContext.Provider 
+            value={{ 
+                photosArray, 
+                loading, 
+                cartItems, 
+                toggleFavorite, 
+                addToCart, 
+                removeFromCart, 
+                emptyCart
+            }}>
             { children }
         </MainContext.Provider>
     )
