@@ -30,7 +30,7 @@ function MainContextProvider({ children }) {
 
     const emptyCart = () => setCartItems([])
 
-    const getData = async ( url ) => {
+    const getData = async () => {
         try {
             const response = await fetch(url, {method: "GET"})
             const data = await response.json()
@@ -47,13 +47,9 @@ function MainContextProvider({ children }) {
             const res = await getData(url)
             if (res.success) {
                 setLoading(false)
-                setPhotosArray(res.data)
-                
+                setPhotosArray(res.data) 
             }
         })()
-        // getData(url)
-        //     .then(data => setPhotosArray(data))
-        //     .catch((err) => console.log(err))
     }, [])
 
     return (
