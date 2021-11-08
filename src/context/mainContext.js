@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
+import apiConfig from "../utils/config"
 
 const MainContext = createContext()
 
@@ -7,7 +8,7 @@ function MainContextProvider({ children }) {
     const [ cartItems, setCartItems ] = useState([])
     const [ loading, setLoading ] = useState(true)
 
-    const url = "https://my-hikes-api.herokuapp.com/hikes"
+    const url = apiConfig.url
     
     const toggleFavorite = ( id ) => {
         const updatedArr = photosArray.map(photo => {
