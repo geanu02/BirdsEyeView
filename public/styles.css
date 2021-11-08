@@ -22,6 +22,9 @@ main.photos {
 }
 
 main.cart-page {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 10px;
 }
 
@@ -74,7 +77,15 @@ img.image-grid {
 
 .image-container {
     position: relative;
+    transition: 
+        transform 250ms cubic-bezier(0.5, 0, 0.5, 1),
+        opacity 250ms linear;
 }
+
+.image-container:hover {
+    opacity: 0.90;  
+}
+
 
 .favorite {
     color: var(--red);

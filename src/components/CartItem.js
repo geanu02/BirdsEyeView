@@ -19,7 +19,7 @@ function CartItem({item}) {
                 ref={eventRef}
             ></i>
             <img src={item.url} width="150px" />
-            <p>USD 5.99</p>
+            <p>$5.99</p>
         </div>
     )
 }

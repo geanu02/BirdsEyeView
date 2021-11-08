@@ -33,8 +33,11 @@ function Cart() {
                 <Link to="/" style={{color: 'black'}}>Shop here</Link>.
                 </p></>
             }
-            {cartItemElements}
-            <p className="total-cost">Total: {totalCostDisplay}</p>
+            {cartItems.length > 0 && <>
+                {cartItemElements}
+                <p className="total-cost">Total: {totalCostDisplay}</p>
+                </>
+            }
             <div className="order-button">
                 <button
                     disabled={cartItems.length === 0}
