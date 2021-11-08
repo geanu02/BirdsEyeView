@@ -30,9 +30,21 @@ function Image({ className, img }) {
             ></i>
         } else if (hovered) {
             return <i 
-                className="ri-add-circle-line cart"
+                className="ri-shopping-cart-line cart"
                 onClick={() => addToCart(img)}     
             ></i>
+        }
+    }
+
+    const zoomIcon = () => {
+        if (hovered) {
+            return <i className="ri-zoom-in-line zoom"></i>
+        }
+    }
+
+    const title = () => {
+        if (hovered) {
+            return <div className="title">{img.title}</div>
         }
     }
 
@@ -47,6 +59,7 @@ function Image({ className, img }) {
             />
             {heartIcon()}
             {cartIcon()}
+            {title()}
         </div>
     )
 }
