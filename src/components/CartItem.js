@@ -18,7 +18,7 @@ function CartItem({item}) {
                 onClick={() => removeFromCart(item.id)}
                 ref={eventRef}
             ></i>
-            <img src={item.url} width="150px" />
+            <img src={item.url} width="150px" alt={item.title} />
             <h2>{item.title}</h2>
             <p>$5.99</p>
         </div>

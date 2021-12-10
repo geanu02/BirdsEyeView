@@ -8,8 +8,6 @@ function MainContextProvider({ children }) {
     const [ cartItems, setCartItems ] = useState([])
     const [ loading, setLoading ] = useState(true)
 
-    const url = apiConfig.url
-    
     const toggleFavorite = ( id ) => {
         const updatedArr = photosArray.map(photo => {
             if (photo.id === id) {
@@ -30,18 +28,19 @@ function MainContextProvider({ children }) {
 
     const emptyCart = () => setCartItems([])
 
-    const getData = async () => {
-        try {
-            const response = await fetch(url, {method: "GET"})
-            const data = await response.json()
-            return { success: true, data }
-        } catch (error) {
-            console.log(error)
-            return {success: false}
-        }
-    }
-
     useEffect(() => {
+        const url = apiConfig.url
+        const getData = async () => {
+                try {
+                    const response = await fetch(url, {method: "GET"})
+                    const data = await response.json()
+                    return { success: true, data }
+                } catch (error) {
+                    console.log(error)
+                    return {success: false}
+                }
+            }
+
         (async () => {
             setLoading(true)
             const res = await getData(url)

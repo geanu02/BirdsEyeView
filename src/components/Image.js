@@ -36,12 +36,6 @@ function Image({ className, img }) {
         }
     }
 
-    const zoomIcon = () => {
-        if (hovered) {
-            return <i className="ri-zoom-in-line zoom"></i>
-        }
-    }
-
     const title = () => {
         if (hovered) {
             return <div className="title">{img.title}</div>
@@ -56,6 +50,7 @@ function Image({ className, img }) {
             <img 
                 src={img.url} 
                 className="image-grid"
+                alt={img.title}
             />
             {heartIcon()}
             {cartIcon()}
