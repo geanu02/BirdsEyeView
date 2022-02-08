@@ -7,7 +7,7 @@ function Header() {
 
     return (
         <header>
-            <Link to="/"><h2>Bird's Eye View</h2></Link>
+            <Link to="/"><h1 className="headinger">Bird's Eye View</h1></Link>
             <Link to="/cart">
                 <i 
                     className={

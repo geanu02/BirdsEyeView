@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
+
 :root {
     --black: #150605;
     --red: #EA453C;
@@ -12,6 +15,18 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.headinger {
+    font-family: 'Lobster Two', cursive;
+    opacity: 40%;
+    transition: opacity 2s;
+}
+
+.headinger:hover {
+    transition: opacity 2s;
+    opacity: 100%;
+}
+
 
 main.photos {
     padding: 10px;
