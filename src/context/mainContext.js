@@ -28,22 +28,21 @@ function MainContextProvider({ children }) {
 
     const emptyCart = () => setCartItems([])
 
-    useEffect(() => {
-        const url = apiConfig.url
-        const getData = async () => {
-                try {
-                    const response = await fetch(url, {method: "GET"})
-                    const data = await response.json()
-                    return { success: true, data }
-                } catch (error) {
-                    console.log(error)
-                    return {success: false}
-                }
-            }
+    const getData = async ( url ) => {
+        try {
+            const response = await fetch(url, {method: "GET"})
+            const data = await response.json()
+            return { success: true, data }
+        } catch (error) {
+            console.log(error)
+            return { success: false }
+        }
+    }
 
+    useEffect(() => {
         (async () => {
             setLoading(true)
-            const res = await getData(url)
+            const res = await getData(apiConfig.url)
             if (res.success) {
                 setLoading(false)
                 setPhotosArray(res.data) 
