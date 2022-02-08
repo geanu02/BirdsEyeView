@@ -18,6 +18,7 @@ html, body {
 
 .headinger {
     font-family: 'Lobster Two', cursive;
+    font-style: italic;
     opacity: 40%;
     transition: opacity 2s;
 }
