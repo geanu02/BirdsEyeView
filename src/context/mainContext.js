@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
-import apiConfig from "../utils/config"
+import apiConfig from "../utils/config.js"
 
 const MainContext = createContext()
 
@@ -27,27 +27,36 @@ function MainContextProvider({ children }) {
 
     const emptyCart = () => setCartItems([])
 
-    const getData = async ( surl ) => {
-        try {
-            const response = await fetch(surl, {method: "GET"})
-            const data = await response.json()
-            return { success: true, data }
-        } catch (error) {
-            console.log(error)
-            return { success: false }
-        }
-    }
+    // const getData = async ( surl ) => {
+    //     try {
+    //         const response = await fetch(surl, {method: "GET"})
+    //         const data = await response.json()
+    //         return { success: true, data }
+    //     } catch (error) {
+    //         console.log(error)
+    //         return { success: false }
+    //     }
+    // }
 
     useEffect(() => {
-        (async () => {
-            setLoading(true)
-            const jurl = apiConfig.url
-            const res = await getData(jurl)
-            if (res.success) {
-                setLoading(false)
-                setPhotosArray(res.data) 
-            }
-        })()
+        // (async () => {
+        //     setLoading(true)
+        //     const jurl = apiConfig.url
+        //     const res = await getData(jurl)
+        //     if (res.success) {
+        //         setLoading(false)
+        //         setPhotosArray(res.data) 
+        //     }
+        // })()
+        setLoading(true)
+        const fetchData = async () => {
+            const res = await fetch(apiConfig.url)
+            const json = await res.json()
+            setPhotosArray(json)
+        }
+        fetchData()
+            .catch(console.error)
+            .finally(() => setLoading(false))
     }, [])
 
     return (
