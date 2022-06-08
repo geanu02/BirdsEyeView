@@ -50,8 +50,10 @@ function MainContextProvider({ children }) {
         // })()
         setLoading(true)
         const fetchData = async () => {
-            const res = await fetch(apiConfig.url)
+            const apiAddress = apiConfig.url
+            const res = await fetch(apiAddress)
             const json = await res.json()
+            console.log(json)
             setPhotosArray(json)
         }
         fetchData()
