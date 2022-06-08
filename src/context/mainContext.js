@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
-import apiConfig from "../utils/config.js"
+import apiConfig from "../utils/config"
 
 const MainContext = createContext()
 
